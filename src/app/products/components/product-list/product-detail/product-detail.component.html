@@ -1,0 +1,50 @@
+<ng-container *ngIf="productsResult$ | async as ProductResult">
+  <ng-container *ngIf="!ProductResult.loading; else loadingRef">
+    <div class="card" style="width: 18rem" [formGroup]="productForm">
+      <img src="https://picsum.photos/200/300" class="card-img-top" alt="..." />
+
+      <div class="card-body">
+        <input type="text" class="form-control" formControlName="nombre" />
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="precioNormal"
+          />
+        </li>
+        <li class="list-group-item">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="precioOferta"
+          />
+        </li>
+        <li class="list-group-item">
+          <input type="checkbox" formControlName="descuento" />
+          <span>Descuento</span>
+        </li>
+        <li class="list-group-item">
+          <input type="checkbox" formControlName="publicado" />
+          <span>Publicado</span>
+        </li>
+      </ul>
+      <div class="card-body">
+        <button
+          class="btn btn-success"
+          (click)="editProduct(ProductResult.data.producto.id)"
+        >
+          Editar
+        </button>
+      </div>
+    </div>
+    <button class="btn btn-warning mt-3" (click)="toBackHome()">
+      <p class="text-light cursor mb-0">Regresar</p>
+    </button>
+  </ng-container>
+</ng-container>
+
+<ng-template #loadingRef>
+  <p>loading...</p>
+</ng-template>

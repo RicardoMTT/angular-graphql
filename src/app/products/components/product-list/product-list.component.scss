@@ -1,0 +1,30 @@
+.card {
+  width: 30%;
+  //   height: 30rem;
+  margin: 10px 0;
+
+  align-content: flex-start;
+}
+
+.main-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 100px;
+  }
+}
+
+.create-product {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    color: #fff;
+  }
+}

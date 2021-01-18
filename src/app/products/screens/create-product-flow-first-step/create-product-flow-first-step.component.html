@@ -1,0 +1,21 @@
+<form (submit)="handleSubmit()">
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="productName"
+      placeholder="Nombre del producto"
+    />
+  </div>
+  <div class="form-check">
+    <input
+      [(ngModel)]="published"
+      name="published"
+      type="checkbox"
+      class="form-check-input"
+      id="publishedID"
+    />
+    <label class="form-check-label" for="publishedID">Publicado</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

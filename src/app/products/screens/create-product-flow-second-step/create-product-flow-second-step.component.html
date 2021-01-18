@@ -1,0 +1,55 @@
+<!-- <h1>Paso 2</h1>
+<form (submit)="handleStep2()">
+  <input
+    [(ngModel)]="priceNormal"
+    name="priceNormal"
+    type="text"
+    placeholder="Precio normal"
+  /><input
+    [(ngModel)]="priceOffer"
+    name="priceOffer"
+    type="text"
+    placeholder="Precio oferta"
+  />
+  <input [(ngModel)]="discount" name="discount" type="checkbox" />
+  <div>
+    <button type="submit">Siguiente</button>
+  </div>
+</form> -->
+
+<form (submit)="handleStep2()">
+  <div class="form-group mb-3">
+    <input
+      class="form-control"
+      [(ngModel)]="priceNormal"
+      name="priceNormal"
+      type="text"
+      placeholder="Precio normal"
+    />
+  </div>
+  <div class="form-group mb-3">
+    <input
+      class="form-control"
+      [(ngModel)]="priceOffer"
+      name="priceOffer"
+      type="text"
+      placeholder="Precio oferta"
+    />
+  </div>
+  <div class="form-check">
+    <input
+      [(ngModel)]="discount"
+      name="discount"
+      type="checkbox"
+      type="checkbox"
+      class="form-check-input"
+      id="descuentoID"
+    />
+    <label class="form-check-label" for="descuentoID">Descuent</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<button class="btn btn-warning mt-4" *ngIf="toBack" (click)="backToHome()">
+  <span class="text-white">Regresar</span>
+</button>

@@ -1,0 +1,113 @@
+<div class="create-product">
+  <button class="btn btn-info" (click)="redirectFirstStep()">
+    Crear producto
+  </button>
+</div>
+
+<ng-container *ngIf="productsResult$ | async as Products">
+  <ng-container *ngIf="!Products.loading; else loadingRef">
+    <h1>Lista de productos</h1>
+    <div class="main-cards">
+      <div class="card" *ngFor="let product of Products.data.productos">
+        <img
+          class="card-img-top"
+          src="https://picsum.photos/200/300"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 style="margin: 0" class="card-title">{{ product.nombre }}</h5>
+          <p
+            class="card-text"
+            style="margin: 0"
+            *ngIf="!editProduct; else editFieldPrice"
+          >
+            Precio normal:
+            {{ product.precioNormal }}
+          </p>
+          <ng-template #editFieldPrice>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nuevo precio"
+              [(ngModel)]="newPrice"
+            />
+          </ng-template>
+          <p
+            class="card-text"
+            style="margin: 0"
+            *ngIf="!editProduct; else editFieldPriceOferta"
+          >
+            Precio oferta:
+            {{ product.precioOferta }}
+          </p>
+          <ng-template #editFieldPriceOferta>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nueva oferta"
+              [(ngModel)]="newPriceOffer"
+            />
+          </ng-template>
+          <div class="form-check">
+            <span
+              (click)="handlePublishedClick(product.id, !product.publicado)"
+            >
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [checked]="product.publicado"
+              />
+            </span>
+            <label class="form-check-label">Publicado</label>
+          </div>
+          <div class="form-check">
+            <span (click)="handleDiscountClick(product.id, !product.descuento)">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [checked]="product.descuento"
+              />
+            </span>
+            <label class="form-check-label">Descuento</label>
+          </div>
+          <div class="options">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteProduct(product.id)"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="changeToEditProduct(product.id)"
+              *ngIf="!this.editProduct; else finishEdit"
+            >
+              Editar
+            </button>
+
+            <ng-template #finishEdit>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="
+                  updateProduct(
+                    product.id,
+                    product.descuento,
+                    product.publicado
+                  )
+                "
+              >
+                Finalizar
+              </button>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #loadingRef>
+    <p>Loading...</p>
+  </ng-template>
+</ng-container>
