@@ -41,15 +41,16 @@
       [(ngModel)]="discount"
       name="discount"
       type="checkbox"
-      type="checkbox"
       class="form-check-input"
       id="descuentoID"
     />
     <label class="form-check-label" for="descuentoID">Descuent</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Crear producto</button>
 </form>
 
-<button class="btn btn-warning mt-4" *ngIf="toBack" (click)="backToHome()">
-  <span class="text-white">Regresar</span>
-</button>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-warning mt-4" *ngIf="toBack" (click)="backToHome()">
+    <span class="text-white">Regresar</span>
+  </button>
+</div>

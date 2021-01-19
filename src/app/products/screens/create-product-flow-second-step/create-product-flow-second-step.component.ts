@@ -24,7 +24,6 @@ export class CreateProductFlowSecondStepComponent implements OnInit {
   ngOnInit(): void {}
 
   async handleStep2() {
-    this.toBack = true;
     await this.createProductFlow.setStep2Info(
       { discount: this.discount },
       { priceNormal: this.priceNormal },
@@ -40,6 +39,8 @@ export class CreateProductFlowSecondStepComponent implements OnInit {
     if (!responseConfirm) {
       return;
     }
+    this.toBack = true;
+
     const newProduct = {
       nombre: valueJson.name,
       precioNormal: Number(valueJson.priceNormal),
